@@ -104,18 +104,18 @@ main article section.info-content h1{
     color:#ccf;
 }
 
-main article section.info-content p:nth-child(1){
+main article section.info-content .info-block p:nth-child(1){
     font-size:18px;
     font-weight:bold;
     text-decoration:underline;
 }
 
-main article section.info-content p:nth-child(2){
+main article section.info-content .info-block p:nth-child(2){
     font-size:16px;
     color:#000;
 }
 
-main article section.info-content p:nth-child(2):hover{
+main article section.info-content .info-block p:nth-child(2):hover{
     color:#e2bb1e;
 }
 
@@ -211,9 +211,40 @@ div.newsInfo-block h1{
 
 
 /*livePage*/
+article#main-article div.live-info-block{
+    border-bottom:1px solid #555;
+    margin-bottom:10px;
+    padding:0 30px;
+}
 
+article#main-article div.live-info-block p:nth-child(1){
+    font-size:20px;
+    font-weight:bold;
+    color:#777;
+}
 
+div.numbers-list{
+    display:flex;
+    justify-content:center;
+    margin-top:30px;
+    margin-bottom:15px;
+}
 
+.number-circle{
+    background-color:#aaf;
+    font-size:12px;
+    width:20px;
+    height:20px;
+    border-radius:15px;
+    margin-left:10px;
+
+    transition:0.5s;
+}
+
+.number-circle:hover{
+    background-color:#55f;
+    color:#fff;
+}
 
 /*discographyPage*/
 
