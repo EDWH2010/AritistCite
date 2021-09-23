@@ -45,6 +45,24 @@ class MovieInfoData extends InfoData{
     
 }
 
+class DiscoInfoData extends InfoData{
+    static name="DiscoInfoData";
+    imageSrc;
+
+    constructor(content,src){
+        super(content);
+        this.imageSrc = src;
+    }
+
+}
+
+const PAGETYPE = 'pageType';
+
+const NEWSITEM = 'newsItem';
+const LIVEITEM = 'liveItem';
+const DISCOITEM = 'discoItem';
+
 
 const NewsInfoArray = [];
 const LiveInfoArray = [];
+const discoInfoArray = [];

@@ -89,10 +89,11 @@ function createLiveInfoBlock(){
 }
 
 
-function newInfoBlockAppend(block,infoArray,start,count){
 
-  //var infoBlock = createNewsInfoBlock();
-  for(let i=start;i<i+count;i++){
+
+function infoBlockAppend(block,infoArray,start,count){
+  
+  for(let i=start;i<start+count;i++){
     if(i > infoArray.length-1)
       break;
     var infoBlock = createNewsInfoBlock();
@@ -103,15 +104,62 @@ function newInfoBlockAppend(block,infoArray,start,count){
 
 } 
 
-function createImageTable(tClassName,rows,cols){
+
+//pageList Setting
+function getPageNumberCount(infoArray,count){
+  if(typeof infoArray === 'Array'){
+    let pagesCount = infoArray.length/count+1;
+    return pagesCount;
+  }
+}
+
+function appendCircleButtonToList(list,type,infoArray){
+  let count = getPageNumberCount(infoArray,10);
+  for(var i=0;i<count;i++){
+    let numberBlock = document.createElement('div');
+    numberBlock.className = 'number-circle';
+    numberBlock.onclick = function(){
+      pageButtonSelect(type,i+1);
+    };
+    numberBlock.innerHTML = (i+1).toString();
+    list.appendChild(numberBlock);
+  }
+}
+
+function pageButtonSelect(pageType,number){
+  localStorage.clear();
+  localStorage.setItem(pageType,number);
+  window.location.reload();
+}
+
+function pageListLoading(type){
+  let start = localStorage.getItem(type);
+
+}
+
+
+function createTable(tClassName,rows,cols){
     const table = document.createElement('table');
     table.className = tClassName;
-    
+
+  for(let i=0;i<rows;i++) {
+    let row = table.insertRow();
+    for(let j=0;j<cols;j++){
+      row.insertCell();
+    }
+  }
+
     return table;
 }
 
 
 
+
+function getOnlyListByClassName(array){
+  for(let i=0;i<array.length;i++){
+
+  }
+}
 
 
 

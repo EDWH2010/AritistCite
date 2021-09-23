@@ -6,14 +6,12 @@ window.onload = function() {
     }
 */
 
-
     switch(getFileName()) {
         case 'index':
-            showCurrentOption(getOptionsList());
+            indexLoading();
             break;
         case 'news':
-            newsInfoDataLoading();
-            appendInfoBlock(0,10);
+            newsLoading();
             break;
         case 'live':
             break;
@@ -32,6 +30,40 @@ window.onload = function() {
 
 }
 
+function indexLoading() {
+    showCurrentOption(getOptionsList());
+}
+
+function newsLoading(){
+    newsInfoDataLoading();
+    appendInfoBlock(0,10);
+}
+
+function liveLoading() {
+
+}
+
+function discoLoading(){
+
+}
+
+function movieLoading(){
+
+}
+
+function specLoading(){
+
+}
+
+function profileLoading(){
+
+}
+
+function contactLoading(){
+
+}
+
+
 function getOptionsList(){
     return $('header div.selection-list ul');
 }
@@ -45,20 +77,8 @@ function showCurrentOption(list,option=''){
     });
 }
 
-function appendInfoBlock(start,count){
-    let element = document.querySelector('article#main-article section.info-content');
-    const infoBlocks = [];
-    for(let e of element.childNodes){
-        if(e.tagName == 'DIV'){
-            infoBlocks.push(e);
-            alert(e.tagName);
-        }
-    }
 
-    return;
 
-    newInfoBlockAppend(element,NewsInfoArray,start,count);
-}
 
 function detectIsRightClass(element,cName){
     if(element.tagName == 'DIV' && element.className == cName){
@@ -74,7 +94,32 @@ function getFileName(isEx=false){
     return isEx ? hArr[hArr.length-1]:hArr[hArr.length-1].substring(0,hArr[hArr.length-1].indexOf('.'));
 }
 
-function appendNewsBlock(){
-    let ele = document.querySelector('article#main-article section.info-content');
-    newInfoBlockAppend(ele,NewsInfoArray,5,3);
+function appendInfoBlock(start,count){
+    let element = document.querySelector('article#main-article section.info-content');
+    infoBlockAppend(element,NewsInfoArray,start,count);
 }
+
+function appendLiveInfoBlock(start,count){
+
+}
+
+function appendDisInfoBlock(start,count){
+
+}
+
+function appendMovieInfoBlock(start,count){
+
+}
+
+
+
+
+//clear child method
+function clearChildNodes(block){
+    let child = block.childNodes;
+    for(let c of child){
+        block.removeChild(c);
+    }
+}
+
+
