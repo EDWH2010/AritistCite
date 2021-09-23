@@ -74,3 +74,7 @@ function getFileName(isEx=false){
     return isEx ? hArr[hArr.length-1]:hArr[hArr.length-1].substring(0,hArr[hArr.length-1].indexOf('.'));
 }
 
+function appendNewsBlock(){
+    let ele = document.querySelector('article#main-article section.info-content');
+    newInfoBlockAppend(ele,NewsInfoArray,5,3);
+}

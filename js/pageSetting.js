@@ -76,6 +76,18 @@ function createNewsInfoBlock(){
   return div;
 }
 
+function createLiveInfoBlock(){
+   let div = document.createElement('div');
+  div.className = 'liveInfo-block';
+
+  for(let i=0;i<3;i++){
+    let p = document.createElement('p');
+    div.appendChild(p);
+  }
+
+  return div;
+}
+
 
 function newInfoBlockAppend(block,infoArray,start,count){
 
@@ -90,6 +102,15 @@ function newInfoBlockAppend(block,infoArray,start,count){
   }
 
 } 
+
+function createImageTable(tClassName,rows,cols){
+    const table = document.createElement('table');
+    table.className = tClassName;
+    
+    return table;
+}
+
+
 
 
 
