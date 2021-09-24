@@ -1,5 +1,10 @@
 const displayCount=10;
 
+function discoInfoDataLoading(){
+
+}
+
+
 function liveInfoDataLoading(){
     LiveInfoArray.push(new LiveInfoData('ナガノアニエラフェスタ 2020 to 2021','2021年9月18日(土)','長野県佐久市駒場公園'));
     LiveInfoArray.push(new LiveInfoData('Lia ORCHESTRA CONCERT -20th Anniversary Special -TOKYO【振替日程】2021年5月5日（祝・水）','2021年5月5日（祝・水）','サントリーホール 大ホール'));
@@ -87,7 +92,7 @@ function newsInfoDataLoading(){
 
 function createNewsInfoBlock(){
   let div = document.createElement('div');
-  div.className = 'newsInfo-block';
+  div.className = 'news-info-block';
 
   for(let i=0;i<2;i++){
     let p = document.createElement('p');
@@ -99,7 +104,7 @@ function createNewsInfoBlock(){
 
 function createLiveInfoBlock(){
    let div = document.createElement('div');
-  div.className = 'liveInfo-block';
+  div.className = 'live-info-block';
 
   for(let i=0;i<3;i++){
     let p = document.createElement('p');
@@ -111,7 +116,6 @@ function createLiveInfoBlock(){
 
 
 function newsInfoBlockAppend(block,infoArray,start,count){
-  
   for(let i=start;i<start+count;i++){
     if(i > infoArray.length-1)
       break;
@@ -127,7 +131,7 @@ function liveInfoBlockAppend(block,infoArray,start,count){
    for(let i=start;i<start+count;i++){
     if(i > infoArray.length-1)
       break;
-    var infoBlock = createNewsInfoBlock();
+    var infoBlock = createLiveInfoBlock();
     infoBlock.childNodes[0].innerHTML = infoArray[i].getContent();
     infoBlock.childNodes[1].innerHTML = infoArray[i].getDate();
     infoBlock.childNodes[2].innerHTML = infoArray[i].getAddress();
@@ -143,13 +147,13 @@ function getPageNumberCount(infoArray,count){
     return pagesCount;
 }
 
-function appendCircleButtonToList(list,type,infoArray){
+function appendCircleButtonToList(list,infoArray){
   let count = getPageNumberCount(infoArray,10);
   for(var i=0;i<count;i++){
     let numberBlock = document.createElement('div');
     numberBlock.className = 'number-circle';
     numberBlock.addEventListener('click',function(){
-      pageButtonSelect(type,i+1);
+      pageButtonSelect(i);
     });
     numberBlock.addEventListener('mouseover',function(){
       this.style.cursor='pointer';
@@ -159,8 +163,8 @@ function appendCircleButtonToList(list,type,infoArray){
   }
 }
 
-function pageButtonSelect(pageType,number){
-  localStorage.setItem(pageType,number);
+function pageButtonSelect(number){
+  localStorage.setItem(PAGECOUNT,number);
   window.location.reload();
 }
 
@@ -189,9 +193,6 @@ function createTable(tClassName,rows,cols){
 }
 
 function addImageDataToTable(table,imagesArray){
-  if(typeof imagesArray !== 'Array')
-    return;
-
 
 }
 
@@ -202,6 +203,13 @@ function getOnlyListByClassName(array){
   }
 }
 
+//clear child method
+function clearChildNodes(block){
+    let child = block.childNodes;
+    for(let c of child){
+        block.removeChild(c);
+    }
+}
 
 
 

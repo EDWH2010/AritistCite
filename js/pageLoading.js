@@ -5,7 +5,7 @@ window.onload = function() {
         alert("X Position : " + e.pageX + "; Y Position : " + e.pageY);
     }
 */
-
+    
     switch(getFileName()) {
         case 'index':
             indexLoading();
@@ -42,16 +42,23 @@ function indexLoading() {
 
 function newsLoading(){
     localStorage.setItem(PAGETYPE,NEWSITEM);
-    newsInfoDataLoading();
-    
-    appendCircleButtonToList(getNumberList(),getPageType(),NewsInfoArray);
 
+    newsInfoDataLoading();
+    alert(getInfoIndex());
+    newsInfoBlockAppend(getInfoContent('info-content'),NewsInfoArray,getInfoIndex() * 10,10);
+    appendCircleButtonToList(getNumberList(),NewsInfoArray);
 }
 
 function liveLoading() {
      localStorage.setItem(PAGETYPE,LIVEITEM);
+
     liveInfoDataLoading();
-    appendCircleButtonToList(getNumberList(),getPageType(),LiveInfoArray);
+    liveInfoBlockAppend(getInfoContent('info-content'),LiveInfoArray,getInfoIndex() * 10,10);
+    appendCircleButtonToList(getNumberList(),LiveInfoArray);
+}
+
+function getInfoIndex(){
+   return localStorage.getItem(PAGECOUNT) !== null ? localStorage.getItem(PAGECOUNT) : 0;
 }
 
 function discoLoading(){
@@ -118,31 +125,9 @@ function getFileName(isEx=false){
     return isEx ? hArr[hArr.length-1]:hArr[hArr.length-1].substring(0,hArr[hArr.length-1].indexOf('.'));
 }
 
-function appendInfoBlock(className,start,count){
-    let element = document.querySelector('article#main-article section.'+className);
-    infoBlockAppend(element,NewsInfoArray,start,count);
-}
-
-function appendLiveInfoBlock(start,count){
-
-}
-
-function appendDisInfoBlock(start,count){
-
-}
-
-function appendMovieInfoBlock(start,count){
-
+function getInfoContent(className){
+    return document.querySelector('section.'+className);
 }
 
 
-
-
-//clear child method
-function clearChildNodes(block){
-    let child = block.childNodes;
-    for(let c of child){
-        block.removeChild(c);
-    }
-}
 
