@@ -136,12 +136,11 @@ function liveInfoBlockAppend(block,infoArray,start,count){
 }
 
 
+
 //pageList Setting
 function getPageNumberCount(infoArray,count){
-  if(typeof infoArray === 'Array'){
-    let pagesCount = infoArray.length/count+1;
+    let pagesCount = Math.floor(infoArray.length/count)+1;
     return pagesCount;
-  }
 }
 
 function appendCircleButtonToList(list,type,infoArray){
@@ -152,20 +151,26 @@ function appendCircleButtonToList(list,type,infoArray){
     numberBlock.addEventListener('click',function(){
       pageButtonSelect(type,i+1);
     });
+    numberBlock.addEventListener('mouseover',function(){
+      this.style.cursor='pointer';
+    });
     numberBlock.innerHTML = (i+1).toString();
     list.appendChild(numberBlock);
   }
 }
 
 function pageButtonSelect(pageType,number){
-  localStorage.clear();
   localStorage.setItem(pageType,number);
   window.location.reload();
 }
 
-function pageListLoading(type){
-  let start = localStorage.getItem(type);
 
+function getNumberList(){
+    return document.querySelector('div.numbers-list');
+}
+
+function clearPageSettingCash(){
+  localStorage.clear();
 }
 
 
@@ -183,7 +188,12 @@ function createTable(tClassName,rows,cols){
     return table;
 }
 
+function addImageDataToTable(table,imagesArray){
+  if(typeof imagesArray !== 'Array')
+    return;
 
+
+}
 
 
 function getOnlyListByClassName(array){

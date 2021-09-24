@@ -41,16 +41,21 @@ function indexLoading() {
 }
 
 function newsLoading(){
+    localStorage.setItem(PAGETYPE,NEWSITEM);
     newsInfoDataLoading();
-    appendInfoBlock('info-content',0,10);
+    
+    appendCircleButtonToList(getNumberList(),getPageType(),NewsInfoArray);
+
 }
 
 function liveLoading() {
+     localStorage.setItem(PAGETYPE,LIVEITEM);
     liveInfoDataLoading();
+    appendCircleButtonToList(getNumberList(),getPageType(),LiveInfoArray);
 }
 
 function discoLoading(){
-
+    localStorage.setItem(PAGETYPE,DISCOITEM);
 }
 
 function movieLoading(){
@@ -69,6 +74,19 @@ function contactLoading(){
 
 }
 
+function getPageType(){
+   return localStorage.getItem(PAGETYPE);
+}
+
+function getPageCount(){
+    return localStorage.getItem(PAGECOUNT);
+}
+
+function appendInfoItemByTypeByCount(){
+    switch(getPageType()){
+        
+    }
+}
 
 function getOptionsList(){
     return $('header div.selection-list ul');
@@ -127,5 +145,4 @@ function clearChildNodes(block){
         block.removeChild(c);
     }
 }
-
 

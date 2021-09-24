@@ -101,7 +101,7 @@ main article section.info-content{
 main article section.info-content h1{
     text-align:center;
     font-size:32px;
-    color:#ccf;
+    color:#aaf;
 }
 
 main article section.info-content .info-block p:nth-child(1){
@@ -196,17 +196,22 @@ footer div.footer-small{
 
 div#main-new-image img{
     width:100%;
+
 }
 
-div.newsInfo-block{
-    display:flex;
-    flex-direction:row;
-    justify-content:space-between;
+div.news-info-block{
+    border-bottom:1px solid rgba(85, 85, 85, 0.5);
     margin:15px 5px;
+    text-align:center;
 }
 
-div.newsInfo-block h1{
-    
+div.news-info-block p:nth-child(1){
+    font-size:20px;
+    font-weight:bold;
+}
+
+div.news-info-block p:nth-child(2){
+    color:#666;
 }
 
 
@@ -221,6 +226,14 @@ article#main-article div.live-info-block p:nth-child(1){
     font-size:20px;
     font-weight:bold;
     color:#777;
+}
+
+article#main-article div.live-info-block p:nth-child(2){
+
+}
+
+article#main-article div.live-info-block p:nth-child(3){
+
 }
 
 div.numbers-list{
@@ -249,10 +262,22 @@ div.numbers-list{
 
 /*discographyPage*/
 
+article#main-article section.info-content-discography{
+    background-color:rgba(230,230,230,0.5);
+    padding:30px;
+}
+
+article#main-article section.info-content-discography h1{
+    text-align:center;
+    font-size:32px;
+    color:#aaf;
+}
+
 table.image-table{
     margin:30px auto;
     border-width:0;
     border-collapse:separate;
+    border-spacing:5px;
 }
 
 table.image-table img{

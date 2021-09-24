@@ -32,6 +32,27 @@ class NewsInfoData extends InfoData{
     
 }
 
+class LiveInfoData extends InfoData{
+    static name="NewsInfoData";
+    infoDate;
+    address;
+
+    constructor(content,date,address){
+        super(content);
+        this.infoDate = date;
+        this.address = address;
+    }
+
+    getDate(){
+        return this.infoDate;
+    }
+
+    getAddress(){
+        return this.address;
+    }
+}
+
+
 class MovieInfoData extends InfoData{
 
      static name="MovieInfoData";
@@ -57,10 +78,12 @@ class DiscoInfoData extends InfoData{
 }
 
 const PAGETYPE = 'pageType';
+const PAGECOUNT = 'pageCount';
 
 const NEWSITEM = 'newsItem';
 const LIVEITEM = 'liveItem';
 const DISCOITEM = 'discoItem';
+
 
 
 const NewsInfoArray = [];
