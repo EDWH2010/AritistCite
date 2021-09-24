@@ -1,6 +1,27 @@
 const displayCount=10;
 
 function liveInfoDataLoading(){
+    LiveInfoArray.push(new LiveInfoData('ナガノアニエラフェスタ 2020 to 2021','2021年9月18日(土)','長野県佐久市駒場公園'));
+    LiveInfoArray.push(new LiveInfoData('Lia ORCHESTRA CONCERT -20th Anniversary Special -TOKYO【振替日程】2021年5月5日（祝・水）','2021年5月5日（祝・水）','サントリーホール 大ホール'));
+    LiveInfoArray.push(new LiveInfoData('Lia 20th BEST Special LIVE 2020 @Zepp DiverCity','2020年12月6日（日）','Zepp DiverCity'));
+    LiveInfoArray.push(new LiveInfoData('Lia 20th BEST Special LIVE 2020 @Zepp DiverCity','2020年12月5日（土）','Zepp DiverCity'));
+    LiveInfoArray.push(new LiveInfoData('Lia 20th Anniversary Special Live 2019@SPADE BOX（名古屋）※振替公演','2020年2月10日（月）','SPADE BOX （名古屋）'));
+    LiveInfoArray.push(new LiveInfoData('Lia 20th Anniversary Special Live 2019@チームスマイル豊洲PIT','2019年12月20日（金）','チームスマイル豊洲PIT'));
+    LiveInfoArray.push(new LiveInfoData('Lia China TOUR＠中国・上海MAO','2019年11月24日（日）','中国・上海MAO'));
+    LiveInfoArray.push(new LiveInfoData('Lia China TOUR＠中国・上海MAO','2019年11月23日（土）','中国・上海MAO'));
+    LiveInfoArray.push(new LiveInfoData('Lia 20th Anniversary Special Live 2019@BEAT STATION（福岡）','2019年11月2日（土）','BEAT STATION（福岡）'));
+    LiveInfoArray.push(new LiveInfoData('Lia 20th Anniversary Special Live 2019@ESAKA MUSE（大阪）','2019年10月13日（日）','ESAKA MUSE（大阪）'));
+    LiveInfoArray.push(new LiveInfoData('Lia collaboration Artist THAI ORCHESTRA＠タイ・バンコクSIAM PIC GANESHA','2019年9月14日（土）','タイ・バンコクSIAM PIC GANESHA'));
+    LiveInfoArray.push(new LiveInfoData('Lia 1st LIVE in TAIWAN ～Symphony of Life～＠台湾・台北THE WALL','2019年6月9日（日）','台湾・台北THE WALL'));
+    LiveInfoArray.push(new LiveInfoData('Lia LIVE TOUR 2019 REVIVES@仙台darwin(宮城) ※TOUR FINAL','2019年5月18日（土）','仙台darwin(宮城) ※TOUR FINAL'));
+    LiveInfoArray.push(new LiveInfoData('Lia LIVE TOUR 2019 REVIVES＠横浜Motion Blue YOKOHAMA','2019年5月4日（土） ','横浜Motion Blue YOKOHAMA'));
+    LiveInfoArray.push(new LiveInfoData('Lia LIVE TOUR 2019 REVIVES@NAGOYA Blue Note(愛知)','2019年5月2日（木）','NAGOYA Blue Note(愛知)'));
+    LiveInfoArray.push(new LiveInfoData('Lia LIVE TOUR 2019 REVIVES@Billboard Live OSAKA(大阪)','2019年5月1日（水）','Billboard Live OSAKA(大阪)'));
+    LiveInfoArray.push(new LiveInfoData('Lia LIVE 2018 REVIVES＠Mt.RAINIER HALL SHIBUYA PLEASURE PLEASURE','2018年12月19日（水)','Mt.RAINIER HALL SHIBUYA PLEASURE PLEASURE'));
+    LiveInfoArray.push(new LiveInfoData('Lia LIVE 2018 REVIVES＠Mt.RAINIER HALL SHIBUYA PLEASURE PLEASURE','2018年12月18日（火）','Mt.RAINIER HALL SHIBUYA PLEASURE PLEASURE'));
+    LiveInfoArray.push(new LiveInfoData('Lia Autumn Live & Veil 1st Live at duo MUSIC EXCHANGE＠渋谷duo MUSIC EXCHANGE','2010年9月18日 （土）','渋谷duo MUSIC EXCHANGE'));
+    LiveInfoArray.push(new LiveInfoData('Lia COLLECTION LIVE "THE LIMITED”＠Zepp Tokyo','2007年9月17日 （月）','Zepp Tokyo'));
+    LiveInfoArray.push(new LiveInfoData(`Lia 1st Concert Lia's Cafe Prologue”at Shibuya O-East＠渋谷O-EAST`,'2005年1月28日 ','渋谷O-EAST'));
 
 }
 
@@ -89,9 +110,7 @@ function createLiveInfoBlock(){
 }
 
 
-
-
-function infoBlockAppend(block,infoArray,start,count){
+function newsInfoBlockAppend(block,infoArray,start,count){
   
   for(let i=start;i<start+count;i++){
     if(i > infoArray.length-1)
@@ -103,6 +122,18 @@ function infoBlockAppend(block,infoArray,start,count){
   }
 
 } 
+
+function liveInfoBlockAppend(block,infoArray,start,count){
+   for(let i=start;i<start+count;i++){
+    if(i > infoArray.length-1)
+      break;
+    var infoBlock = createNewsInfoBlock();
+    infoBlock.childNodes[0].innerHTML = infoArray[i].getContent();
+    infoBlock.childNodes[1].innerHTML = infoArray[i].getDate();
+    infoBlock.childNodes[2].innerHTML = infoArray[i].getAddress();
+    block.appendChild(infoBlock);
+  }
+}
 
 
 //pageList Setting
@@ -118,9 +149,9 @@ function appendCircleButtonToList(list,type,infoArray){
   for(var i=0;i<count;i++){
     let numberBlock = document.createElement('div');
     numberBlock.className = 'number-circle';
-    numberBlock.onclick = function(){
+    numberBlock.addEventListener('click',function(){
       pageButtonSelect(type,i+1);
-    };
+    });
     numberBlock.innerHTML = (i+1).toString();
     list.appendChild(numberBlock);
   }

@@ -14,16 +14,22 @@ window.onload = function() {
             newsLoading();
             break;
         case 'live':
+            liveLoading();
             break;
         case 'discography':
+            discoLoading();
             break;
         case 'movie':
+            movieLoading();
             break;
         case 'specialize':
+            specLoading();
             break;
         case 'profile':
+            profileLoading();
             break;
         case 'contact':
+            contactLoading();
             break;
         
     }
@@ -36,11 +42,11 @@ function indexLoading() {
 
 function newsLoading(){
     newsInfoDataLoading();
-    appendInfoBlock(0,10);
+    appendInfoBlock('info-content',0,10);
 }
 
 function liveLoading() {
-
+    liveInfoDataLoading();
 }
 
 function discoLoading(){
@@ -94,8 +100,8 @@ function getFileName(isEx=false){
     return isEx ? hArr[hArr.length-1]:hArr[hArr.length-1].substring(0,hArr[hArr.length-1].indexOf('.'));
 }
 
-function appendInfoBlock(start,count){
-    let element = document.querySelector('article#main-article section.info-content');
+function appendInfoBlock(className,start,count){
+    let element = document.querySelector('article#main-article section.'+className);
     infoBlockAppend(element,NewsInfoArray,start,count);
 }
 
