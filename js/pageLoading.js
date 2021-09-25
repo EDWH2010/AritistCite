@@ -6,6 +6,14 @@ window.onload = function() {
     }
 */
     
+
+    $('.main-logo').hover(function() {
+       $(this).
+    },function(){
+        
+    });
+
+
     switch(getFileName()) {
         case 'index':
             indexLoading();

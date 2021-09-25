@@ -25,7 +25,7 @@ header{
 header .main-logo{
     align-self:center;
     position:absolute;
-    top:0;
+    top:60px;
 }
 
 header .main-logo img{
@@ -74,6 +74,10 @@ main div.slide-imagesShow{
     background-color:#000;
     width:100%;
     height:600px;
+}
+
+div#main-image img{
+    width:100%;
 }
 
 main article#main-article{
@@ -277,7 +281,7 @@ table.image-table{
     margin:30px auto;
     border-width:0;
     border-collapse:separate;
-    border-spacing:5px;
+    border-spacing:30px;
 }
 
 table.image-table img{
@@ -291,4 +295,29 @@ table.image-table img{
 /*emoviePage*/
 
 
+
+
+/*specialize*/
+
+
+
+/*profile*/
+
+section.info-content div.profile-info-block p{
+    color:rgb(38, 38, 77);
+    text-indent:2em;
+    line-height:2em;
+}
+
+.img-left{
+    float:left;
+    margin:0 10px 10px 5px;
+}
+
+.img-right{
+    float:right;
+     margin:10px 10px 10px 15px;
+}
+
+/*contact*/
 
