@@ -74,6 +74,9 @@ class DiscoInfoData extends InfoData{
         this.imageSrc = src;
     }
 
+    getImageSrc(){
+        return this.imageSrc;
+    }
 }
 
 const PAGETYPE = 'pageType';

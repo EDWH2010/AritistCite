@@ -191,20 +191,19 @@ function changeInfoContent(block,index,infoArray,start,count,className){
 }
 
 function changeNewsInfoContent(block,index,infoArray,start,count){
-
+  clearChildNodesByClass(block,index,'news-info-block');
+  newsInfoBlockAppend(block,index,infoArray,start,count);
 }
 
 function changeLiveInfoContent(block,index,infoArray,start,count){
-
+  clearChildNodesByClass(block,index,'live-info-block');
+  liveInfoBlockAppend(block,index,infoArray,start,count);
 }
 
 function changeDiscoInfoContent(block,index,infoArray,start,count){
+  removeImageToTable(block);
 
 }
-
-
-
-
 
 
 
@@ -220,7 +219,7 @@ function appendCircleButtonToList(list,infoArray,count){
     let numberBlock = document.createElement('div');
     numberBlock.className = 'number-circle';
     numberBlock.addEventListener('click',function(){
-      pageButtonSelect(i);
+      pageButtonSelect(i,infoArray,count);
     });
     numberBlock.addEventListener('mouseover',function(){
       this.style.cursor='pointer';
@@ -230,9 +229,21 @@ function appendCircleButtonToList(list,infoArray,count){
   }
 }
 
-function pageButtonSelect(number){
-  localStorage.setItem(PAGECOUNT,number);
-  window.location.reload();
+function pageButtonSelect(number,infoArray,count){
+  alert('page button clicked');
+  return;
+
+  switch(localStorage.getItem(PAGETYPE)){
+    case 'newsItem':
+      
+      break;
+    case 'liveItem':
+
+      break;
+    case 'discoItem':
+
+      break;
+  }
 }
 
 
@@ -245,8 +256,31 @@ function clearPageSettingCash(){
 }
 
 
+function getInfoContent(className){
+    return document.querySelector('section.'+className);
+}
+
+function getInfoContentAll(className){
+    return document.querySelectorAll('section.'+className);
+}
+
+function getInfoContentCount(className){
+    let count = document.querySelectorAll('section.'+className).length;
+    return count;
+}
+
+function getImagesGroup(){
+    return document.querySelector('div.images-group');
+}
+
+
 
 //imageTable Setting
+
+function getTableAllCells(table){
+  return table.rows.length * table.rows[0].cells.length;
+}
+
 
 function createTable(tClassName,rows,cols){
     const table = document.createElement('table');
@@ -269,13 +303,21 @@ function appendTableToBlock(block,table){
   block.appendChild(table);
 }
 
-function addImageDataToTable(table,imgDataArray){
+function addImageDataToTable(table,imgDataArray,start){
+
+  let maxCount = table.rows.length * table.rows[0].cells.length;
+  let dIndex = start;
+
   for(let i=0;i<table.rows.length;i++){
     for(let j=0;j<table.rows[i].cells.length;j++){
+      if(dIndex > imgDataArray.length-1)
+       break;
       let cell = table.rows[i].cells[j];
 
-      cell.childNodes[0].setAttribute('src',imgDataArray[0]);
+      cell.childNodes[0].setAttribute('src',imgDataArray[dIndex].getImageSrc());
       cell.childNodes[0].setAttribute('alt','songImage');
+
+      dIndex++;
     }
   }
 }
@@ -284,6 +326,16 @@ function removeImageToTable(table){
    for(let i=0;i<table.rows.length;i++){
     for(let j=0;j<table.rows[i].cells.length;j++){
       let cell = table.rows[i].cells[j];
+      
+      cell.removeChild(cell.childNodes[0]);
+    }
+  }
+}
+
+function removeImageToTable(tables,index){
+   for(let i=0;i<tables[index].rows.length;i++){
+    for(let j=0;j<tables[index].rows[i].cells.length;j++){
+      let cell = tables[index].rows[i].cells[j];
       
       cell.removeChild(cell.childNodes[0]);
     }
@@ -305,7 +357,7 @@ function clearChildNodes(block,index=0){
     }
 }
 
-function clearChildNodesByClass(block,index=0,className){
+function clearChildNodesByClass(block,index,className){
     let child = block[index].childNodes;
     for(let c of child){
         if(c.className == className)

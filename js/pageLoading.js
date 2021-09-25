@@ -2,17 +2,16 @@ var homeNewsIndex = 0;
 var homeLiveIndex=0;
 var homeDiscoIndex=0;
 
-
-
-
 window.onload = function() {
     /*
     this.onclick = function(e) {
         alert("X Position : " + e.pageX + "; Y Position : " + e.pageY);
     }
 */
+    localStorage.clear();
     newsInfoDataLoading();
     liveInfoDataLoading();
+    discoInfoDataLoading();
 
     $('.main-logo').hover(function() {
        $(this).animate({
@@ -56,24 +55,33 @@ window.onload = function() {
 }
 
 function indexLoading() {
+    $('section.info-content').mouseover(function(){
+        this.style.cursor = 'pointer';
+    });
+    setInterval(function(){
+        imageUpdate($('div.slide-imagesShow'),1500);
+    },5000);
+    
     showCurrentOption(getOptionsList());
     homeInfoUpdate();
 }
 
 function newsLoading(){
     localStorage.setItem(PAGETYPE,NEWSITEM);
+    alert(localStorage.getItem(PAGETYPE));
 
     //newsInfoDataLoading();
     alert(getInfoIndex());
-    newsInfoBlockAppend(getInfoContent('info-content'),NewsInfoArray,getInfoIndex() * 10,10);
+    newsInfoBlockAppend(getInfoContentAll('info-content'),0,NewsInfoArray,0,10);
     appendCircleButtonToList(getNumberList(),NewsInfoArray,10);
 }
 
 function liveLoading() {
      localStorage.setItem(PAGETYPE,LIVEITEM);
+   // alert(localStorage.getItem(PAGETYPE));
 
    // liveInfoDataLoading();
-    liveInfoBlockAppend(getInfoContent('info-content'),LiveInfoArray,getInfoIndex() * 10,10);
+    liveInfoBlockAppend(getInfoContentAll('info-content'),0,LiveInfoArray,0,10);
     appendCircleButtonToList(getNumberList(),LiveInfoArray,10);
 }
 
@@ -83,7 +91,9 @@ function getInfoIndex(){
 
 function discoLoading(){
     localStorage.setItem(PAGETYPE,DISCOITEM);
+    alert(localStorage.getItem(PAGETYPE));
 
+    appendCircleButtonToList(getNumberList(),DiscoInfoArray,12);
     
 }
 
@@ -130,9 +140,6 @@ function showCurrentOption(list,option=''){
     });
 }
 
-
-
-
 function detectIsRightClass(element,cName){
     if(element.tagName == 'DIV' && element.className == cName){
         return true;
@@ -147,22 +154,7 @@ function getFileName(isEx=false){
     return isEx ? hArr[hArr.length-1]:hArr[hArr.length-1].substring(0,hArr[hArr.length-1].indexOf('.'));
 }
 
-function getInfoContent(className){
-    return document.querySelector('section.'+className);
-}
 
-function getInfoContentAll(className){
-    return document.querySelectorAll('section.'+className);
-}
-
-function getInfoContentCount(className){
-    let count = document.querySelectorAll('section.'+className).length;
-    return count;
-}
-
-function getImagesGroup(){
-    return document.querySelector('div.images-group');
-}
 
 
 //Update Home Infomation
