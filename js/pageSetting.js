@@ -1,4 +1,6 @@
 const displayCount=10;
+const homeTextInfoCount = 3;
+const homeImageInfoCount = 4;
 
 function discoInfoDataLoading(){
 
@@ -90,6 +92,31 @@ function newsInfoDataLoading(){
     alert(JSON.stringify(NewsInfoArray));
 }
 
+function createHomeInfoBlock(){
+   let div = document.createElement('div');
+  div.className = 'info-block';
+
+  for(let i=0;i<2;i++){
+    let p = document.createElement('p');
+    div.appendChild(p);
+  }
+
+  return div;
+}
+
+function createHomeInfoBlockByClass(className){
+   let div = document.createElement('div');
+  div.className = className;
+
+  for(let i=0;i<2;i++){
+    let p = document.createElement('p');
+    div.appendChild(p);
+  }
+
+  return div;
+}
+
+
 function createNewsInfoBlock(){
   let div = document.createElement('div');
   div.className = 'news-info-block';
@@ -114,20 +141,30 @@ function createLiveInfoBlock(){
   return div;
 }
 
+function homeInfoBlockAppend(block,index,infoArray,start,count,className){
+   for(let i=start;i<start+count;i++){
+    if(i > infoArray.length-1)
+      break;
+    var infoBlock = createHomeInfoBlockByClass(className);
+    infoBlock.childNodes[0].innerHTML = infoArray[i].getDate();
+    infoBlock.childNodes[1].innerHTML = infoArray[i].getContent();
+    block[index].appendChild(infoBlock);
+  }
+}
 
-function newsInfoBlockAppend(block,infoArray,start,count){
+function newsInfoBlockAppend(block,index,infoArray,start,count){
   for(let i=start;i<start+count;i++){
     if(i > infoArray.length-1)
       break;
     var infoBlock = createNewsInfoBlock();
     infoBlock.childNodes[0].innerHTML = infoArray[i].getDate();
     infoBlock.childNodes[1].innerHTML = infoArray[i].getContent();
-    block.appendChild(infoBlock);
+    block[index].appendChild(infoBlock);
   }
 
 } 
 
-function liveInfoBlockAppend(block,infoArray,start,count){
+function liveInfoBlockAppend(block,index,infoArray,start,count){
    for(let i=start;i<start+count;i++){
     if(i > infoArray.length-1)
       break;
@@ -135,10 +172,15 @@ function liveInfoBlockAppend(block,infoArray,start,count){
     infoBlock.childNodes[0].innerHTML = infoArray[i].getContent();
     infoBlock.childNodes[1].innerHTML = infoArray[i].getDate();
     infoBlock.childNodes[2].innerHTML = infoArray[i].getAddress();
-    block.appendChild(infoBlock);
+    block[index].appendChild(infoBlock);
   }
 }
 
+
+function changeInfoContent(block,index,infoArray,start,count,className){
+  clearChildNodesByClass(block,index,className);
+  homeInfoBlockAppend(block,index,infoArray,start,count,className);
+}
 
 
 //pageList Setting
@@ -178,6 +220,9 @@ function clearPageSettingCash(){
 }
 
 
+
+
+
 function createTable(tClassName,rows,cols){
     const table = document.createElement('table');
     table.className = tClassName;
@@ -204,10 +249,18 @@ function getOnlyListByClassName(array){
 }
 
 //clear child method
-function clearChildNodes(block){
-    let child = block.childNodes;
+function clearChildNodes(block,index=0){
+    let child = block[index].childNodes;
     for(let c of child){
-        block.removeChild(c);
+        block[index].removeChild(c);
+    }
+}
+
+function clearChildNodesByClass(block,index=0,className){
+    let child = block[index].childNodes;
+    for(let c of child){
+        if(c.className == className)
+          block[index].removeChild(c);
     }
 }
 

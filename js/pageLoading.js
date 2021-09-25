@@ -1,3 +1,9 @@
+var homeNewsIndex = 0;
+var homeLiveIndex=0;
+var homeDiscoIndex=0;
+
+
+
 
 window.onload = function() {
     /*
@@ -5,12 +11,17 @@ window.onload = function() {
         alert("X Position : " + e.pageX + "; Y Position : " + e.pageY);
     }
 */
-    
+    newsInfoDataLoading();
+    liveInfoDataLoading();
 
     $('.main-logo').hover(function() {
-       $(this).
+       $(this).animate({
+            top:'30px'
+       });
     },function(){
-        
+        $(this).animate({
+            top:'60px'
+       });
     });
 
 
@@ -46,12 +57,13 @@ window.onload = function() {
 
 function indexLoading() {
     showCurrentOption(getOptionsList());
+    homeInfoUpdate();
 }
 
 function newsLoading(){
     localStorage.setItem(PAGETYPE,NEWSITEM);
 
-    newsInfoDataLoading();
+    //newsInfoDataLoading();
     alert(getInfoIndex());
     newsInfoBlockAppend(getInfoContent('info-content'),NewsInfoArray,getInfoIndex() * 10,10);
     appendCircleButtonToList(getNumberList(),NewsInfoArray);
@@ -60,7 +72,7 @@ function newsLoading(){
 function liveLoading() {
      localStorage.setItem(PAGETYPE,LIVEITEM);
 
-    liveInfoDataLoading();
+   // liveInfoDataLoading();
     liveInfoBlockAppend(getInfoContent('info-content'),LiveInfoArray,getInfoIndex() * 10,10);
     appendCircleButtonToList(getNumberList(),LiveInfoArray);
 }
@@ -137,5 +149,46 @@ function getInfoContent(className){
     return document.querySelector('section.'+className);
 }
 
+function getInfoContentAll(className){
+    return document.querySelectorAll('section.'+className);
+}
+
+function getInfoContentCount(className){
+    let count = document.querySelectorAll('section.'+className).length;
+    return count;
+}
+
+function getImagesGroup(){
+    return document.querySelector('div.images-group');
+}
 
 
+//Update Home Infomation
+
+function homeInfoUpdate(){
+    setInterval(()=>{
+       homeNewsInfoUpdate();
+        homeLiveUpdate();
+        
+    },5000);
+}
+
+function homeNewsInfoUpdate(){
+     homeNewsIndex += 3;
+     if(homeNewsIndex > NewsInfoArray.length-1)
+         homeNewsIndex=0;
+    changeInfoContent(getInfoContentAll('info-content'),0,NewsInfoArray,homeNewsIndex,3,'info-block');
+
+}
+
+function homeLiveUpdate(){
+    homeLiveIndex += 2;
+    if(homeLiveIndex > LiveInfoArray.length-1)
+        homeLiveIndex=0;
+    
+    changeInfoContent(getInfoContentAll('info-content'),1,NewsInfoArray,homeNewsIndex,2,'info-block');
+}
+
+function homeDiscoUpdate(){
+
+}
