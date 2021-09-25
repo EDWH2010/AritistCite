@@ -66,7 +66,7 @@ function newsLoading(){
     //newsInfoDataLoading();
     alert(getInfoIndex());
     newsInfoBlockAppend(getInfoContent('info-content'),NewsInfoArray,getInfoIndex() * 10,10);
-    appendCircleButtonToList(getNumberList(),NewsInfoArray);
+    appendCircleButtonToList(getNumberList(),NewsInfoArray,10);
 }
 
 function liveLoading() {
@@ -74,7 +74,7 @@ function liveLoading() {
 
    // liveInfoDataLoading();
     liveInfoBlockAppend(getInfoContent('info-content'),LiveInfoArray,getInfoIndex() * 10,10);
-    appendCircleButtonToList(getNumberList(),LiveInfoArray);
+    appendCircleButtonToList(getNumberList(),LiveInfoArray,10);
 }
 
 function getInfoIndex(){
@@ -83,6 +83,8 @@ function getInfoIndex(){
 
 function discoLoading(){
     localStorage.setItem(PAGETYPE,DISCOITEM);
+
+    
 }
 
 function movieLoading(){
@@ -169,7 +171,7 @@ function homeInfoUpdate(){
     setInterval(()=>{
        homeNewsInfoUpdate();
         homeLiveUpdate();
-        
+
     },5000);
 }
 

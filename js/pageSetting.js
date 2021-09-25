@@ -3,7 +3,16 @@ const homeTextInfoCount = 3;
 const homeImageInfoCount = 4;
 
 function discoInfoDataLoading(){
-
+  DiscoInfoArray.push(new DiscoInfoData('HeartiliSong','HeartiliSong.png'));
+  DiscoInfoArray.push(new DiscoInfoData('Air_image','Air_image_lia.jpg'));
+  DiscoInfoArray.push(new DiscoInfoData('CharlotteProject','CharlotteProject_Lia.png'));
+  DiscoInfoArray.push(new DiscoInfoData('dearly','dearly_Lia.jpg'));
+  DiscoInfoArray.push(new DiscoInfoData('HeartiliSong','HeartiliSong.png'));
+  DiscoInfoArray.push(new DiscoInfoData('HeartiliSong','HeartiliSong.png'));
+  DiscoInfoArray.push(new DiscoInfoData('HeartiliSong','HeartiliSong.png'));
+  DiscoInfoArray.push(new DiscoInfoData('HeartiliSong','HeartiliSong.png'));
+  DiscoInfoArray.push(new DiscoInfoData('HeartiliSong','HeartiliSong.png'));
+  DiscoInfoArray.push(new DiscoInfoData('HeartiliSong','HeartiliSong.png'));
 }
 
 
@@ -161,7 +170,6 @@ function newsInfoBlockAppend(block,index,infoArray,start,count){
     infoBlock.childNodes[1].innerHTML = infoArray[i].getContent();
     block[index].appendChild(infoBlock);
   }
-
 } 
 
 function liveInfoBlockAppend(block,index,infoArray,start,count){
@@ -182,6 +190,23 @@ function changeInfoContent(block,index,infoArray,start,count,className){
   homeInfoBlockAppend(block,index,infoArray,start,count,className);
 }
 
+function changeNewsInfoContent(block,index,infoArray,start,count){
+
+}
+
+function changeLiveInfoContent(block,index,infoArray,start,count){
+
+}
+
+function changeDiscoInfoContent(block,index,infoArray,start,count){
+
+}
+
+
+
+
+
+
 
 //pageList Setting
 function getPageNumberCount(infoArray,count){
@@ -189,9 +214,9 @@ function getPageNumberCount(infoArray,count){
     return pagesCount;
 }
 
-function appendCircleButtonToList(list,infoArray){
-  let count = getPageNumberCount(infoArray,10);
-  for(var i=0;i<count;i++){
+function appendCircleButtonToList(list,infoArray,count){
+  let pCount = getPageNumberCount(infoArray,count);
+  for(var i=0;i<pCount;i++){
     let numberBlock = document.createElement('div');
     numberBlock.className = 'number-circle';
     numberBlock.addEventListener('click',function(){
@@ -221,7 +246,7 @@ function clearPageSettingCash(){
 
 
 
-
+//imageTable Setting
 
 function createTable(tClassName,rows,cols){
     const table = document.createElement('table');
@@ -230,15 +255,39 @@ function createTable(tClassName,rows,cols){
   for(let i=0;i<rows;i++) {
     let row = table.insertRow();
     for(let j=0;j<cols;j++){
-      row.insertCell();
+      let cell = row.insertCell();
+      let img = document.createElement('img');
+      
+      cell.appendChild(img);
     }
   }
 
     return table;
 }
 
-function addImageDataToTable(table,imagesArray){
+function appendTableToBlock(block,table){
+  block.appendChild(table);
+}
 
+function addImageDataToTable(table,imgDataArray){
+  for(let i=0;i<table.rows.length;i++){
+    for(let j=0;j<table.rows[i].cells.length;j++){
+      let cell = table.rows[i].cells[j];
+
+      cell.childNodes[0].setAttribute('src',imgDataArray[0]);
+      cell.childNodes[0].setAttribute('alt','songImage');
+    }
+  }
+}
+
+function removeImageToTable(table){
+   for(let i=0;i<table.rows.length;i++){
+    for(let j=0;j<table.rows[i].cells.length;j++){
+      let cell = table.rows[i].cells[j];
+      
+      cell.removeChild(cell.childNodes[0]);
+    }
+  }
 }
 
 

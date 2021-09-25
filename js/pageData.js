@@ -63,7 +63,6 @@ class MovieInfoData extends InfoData{
         this.infoDate = date;
     }
 
-    
 }
 
 class DiscoInfoData extends InfoData{
@@ -88,4 +87,4 @@ const DISCOITEM = 'discoItem';
 
 const NewsInfoArray = [];
 const LiveInfoArray = [];
-const discoInfoArray = [];
+const DiscoInfoArray = [];
