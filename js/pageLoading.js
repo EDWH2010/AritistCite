@@ -58,6 +58,19 @@ function indexLoading() {
     $('section.info-content').mouseover(function(){
         this.style.cursor = 'pointer';
     });
+
+    $('.dis-image img').hover(function(){
+        $(this).animate({ 
+            width:'130%',
+            height:'130%'
+        });
+    },function(){
+        $(this).animate({
+            width:'100%',
+            height:'100%'
+        });
+    });
+
     setInterval(function(){
         imageUpdate($('div.slide-imagesShow'),1500);
     },5000);
@@ -68,21 +81,20 @@ function indexLoading() {
 
 function newsLoading(){
     localStorage.setItem(PAGETYPE,NEWSITEM);
-    alert(localStorage.getItem(PAGETYPE));
-
-    //newsInfoDataLoading();
-    alert(getInfoIndex());
-    newsInfoBlockAppend(getInfoContentAll('info-content'),0,NewsInfoArray,0,10);
-    appendCircleButtonToList(getNumberList(),NewsInfoArray,10);
+   // alert(localStorage.getItem(PAGETYPE));
+    newsInfoBlockAppend(document.querySelectorAll('div.news-info-block-group'),0,NewsInfoArray,0,10);
+    appendCircleButtonToList(document.querySelectorAll('div.news-info-block-group'),
+    getNumberList(),NewsInfoArray,10);
+   // let group = createAndAppendNewsInfoBlockGroup(document.querySelector('section.info-content'));
 }
 
 function liveLoading() {
      localStorage.setItem(PAGETYPE,LIVEITEM);
-   // alert(localStorage.getItem(PAGETYPE));
+  // alert(localStorage.getItem(PAGETYPE));
 
    // liveInfoDataLoading();
-    liveInfoBlockAppend(getInfoContentAll('info-content'),0,LiveInfoArray,0,10);
-    appendCircleButtonToList(getNumberList(),LiveInfoArray,10);
+    liveInfoBlockAppend(document.querySelectorAll('div.live-info-block-group'),0,LiveInfoArray,0,10);
+    appendCircleButtonToList(document.querySelectorAll('div.live-info-block-group'),getNumberList(),LiveInfoArray,10);
 }
 
 function getInfoIndex(){
@@ -91,10 +103,9 @@ function getInfoIndex(){
 
 function discoLoading(){
     localStorage.setItem(PAGETYPE,DISCOITEM);
-    alert(localStorage.getItem(PAGETYPE));
-
-    appendCircleButtonToList(getNumberList(),DiscoInfoArray,12);
-    
+  // alert(localStorage.getItem(PAGETYPE));
+    addImageDataToTable(document.querySelector('table.image-table'),DiscoInfoArray,0);
+    appendCircleButtonToList(document.querySelector('table.image-table'),getNumberList(),DiscoInfoArray,12);
 }
 
 function movieLoading(){

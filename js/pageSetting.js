@@ -3,16 +3,22 @@ const homeTextInfoCount = 3;
 const homeImageInfoCount = 4;
 
 function discoInfoDataLoading(){
-  DiscoInfoArray.push(new DiscoInfoData('HeartiliSong','HeartiliSong.png'));
+  DiscoInfoArray.push(new DiscoInfoData('HeartiliSong','HeartilySong.png'));
   DiscoInfoArray.push(new DiscoInfoData('Air_image','Air_image_lia.jpg'));
-  DiscoInfoArray.push(new DiscoInfoData('CharlotteProject','CharlotteProject_Lia.png'));
+  DiscoInfoArray.push(new DiscoInfoData('CharlotteProject','CharlotteProject_Lia.jpg'));
   DiscoInfoArray.push(new DiscoInfoData('dearly','dearly_Lia.jpg'));
-  DiscoInfoArray.push(new DiscoInfoData('HeartiliSong','HeartiliSong.png'));
-  DiscoInfoArray.push(new DiscoInfoData('HeartiliSong','HeartiliSong.png'));
-  DiscoInfoArray.push(new DiscoInfoData('HeartiliSong','HeartiliSong.png'));
-  DiscoInfoArray.push(new DiscoInfoData('HeartiliSong','HeartiliSong.png'));
-  DiscoInfoArray.push(new DiscoInfoData('HeartiliSong','HeartiliSong.png'));
-  DiscoInfoArray.push(new DiscoInfoData('HeartiliSong','HeartiliSong.png'));
+  DiscoInfoArray.push(new DiscoInfoData(`Saya'sSong`,`Saya'sSong.jpg`));
+  DiscoInfoArray.push(new DiscoInfoData('clannadTorch',`ClannadTorch_Lia.jpg`));
+  DiscoInfoArray.push(new DiscoInfoData('ksLiveWorld','KSLLiveWorld_Lia.jpg'));
+  DiscoInfoArray.push(new DiscoInfoData('prismatic_Lia','prismatic_Lia.jpg'));
+  DiscoInfoArray.push(new DiscoInfoData('spectrum','spectrumRays_Lia.jpg'));
+  DiscoInfoArray.push(new DiscoInfoData('Revive','REVIVES_Lia.jpg'));
+  DiscoInfoArray.push(new DiscoInfoData('enigmatic','enigmatic_Lia.JPG'));
+  DiscoInfoArray.push(new DiscoInfoData('clannad_originalSoundTrack','clannad_originalSoundTrack.png'));
+  DiscoInfoArray.push(new DiscoInfoData('kizunairo','kizunairo_Lia.jpg'));
+  DiscoInfoArray.push(new DiscoInfoData('My soul your beats','MySoulYourBeats.png'));
+  DiscoInfoArray.push(new DiscoInfoData('Key lia best 2021','Key_LiasBest-2002-2010.png'));
+  DiscoInfoArray.push(new DiscoInfoData('Revive','REVIVES_Lia.jpg'));
 }
 
 
@@ -150,6 +156,28 @@ function createLiveInfoBlock(){
   return div;
 }
 
+function createAndAppendNewsInfoBlockGroup(content){
+  let group = document.createElement('div');
+  group.className = 'news-info-block-group';
+  content.appendChild(group);
+
+  return group;
+}
+
+
+function createAndAppendLiveInfoBlockGroup(content){
+  let group = document.createElement('div');
+  group.className = 'live-info-block-group';
+  content.appendChild(group);
+
+  return group;
+}
+
+function removeGroup(content,className){
+  let group = content.getElementsByClassName(className)[0];
+  content.removeChild(group);
+}
+
 function homeInfoBlockAppend(block,index,infoArray,start,count,className){
    for(let i=start;i<start+count;i++){
     if(i > infoArray.length-1)
@@ -162,17 +190,20 @@ function homeInfoBlockAppend(block,index,infoArray,start,count,className){
 }
 
 function newsInfoBlockAppend(block,index,infoArray,start,count){
+  let group = createAndAppendNewsInfoBlockGroup(block[index]);
   for(let i=start;i<start+count;i++){
     if(i > infoArray.length-1)
       break;
     var infoBlock = createNewsInfoBlock();
     infoBlock.childNodes[0].innerHTML = infoArray[i].getDate();
     infoBlock.childNodes[1].innerHTML = infoArray[i].getContent();
-    block[index].appendChild(infoBlock);
+    group.appendChild(infoBlock);
   }
 } 
 
 function liveInfoBlockAppend(block,index,infoArray,start,count){
+  let group = createAndAppendLiveInfoBlockGroup(block[index]);
+
    for(let i=start;i<start+count;i++){
     if(i > infoArray.length-1)
       break;
@@ -180,7 +211,8 @@ function liveInfoBlockAppend(block,index,infoArray,start,count){
     infoBlock.childNodes[0].innerHTML = infoArray[i].getContent();
     infoBlock.childNodes[1].innerHTML = infoArray[i].getDate();
     infoBlock.childNodes[2].innerHTML = infoArray[i].getAddress();
-    block[index].appendChild(infoBlock);
+
+      group.appendChild(infoBlock);
   }
 }
 
@@ -191,12 +223,14 @@ function changeInfoContent(block,index,infoArray,start,count,className){
 }
 
 function changeNewsInfoContent(block,index,infoArray,start,count){
-  clearChildNodesByClass(block,index,'news-info-block');
+ // clearChildNodesByClass(block,index,'news-info-block');
+  removeGroup(block[index],'news-info-block-group');
   newsInfoBlockAppend(block,index,infoArray,start,count);
 }
 
 function changeLiveInfoContent(block,index,infoArray,start,count){
-  clearChildNodesByClass(block,index,'live-info-block');
+ // clearChildNodesByClass(block,index,'live-info-block');
+  removeGroup(block[index],'live-info-block-group');
   liveInfoBlockAppend(block,index,infoArray,start,count);
 }
 
@@ -213,13 +247,14 @@ function getPageNumberCount(infoArray,count){
     return pagesCount;
 }
 
-function appendCircleButtonToList(list,infoArray,count){
+function appendCircleButtonToList(block,list,infoArray,count){
   let pCount = getPageNumberCount(infoArray,count);
   for(var i=0;i<pCount;i++){
     let numberBlock = document.createElement('div');
     numberBlock.className = 'number-circle';
     numberBlock.addEventListener('click',function(){
-      pageButtonSelect(i,infoArray,count);
+      alert(i);
+      pageButtonSelect(block,i,infoArray,count);
     });
     numberBlock.addEventListener('mouseover',function(){
       this.style.cursor='pointer';
@@ -229,19 +264,18 @@ function appendCircleButtonToList(list,infoArray,count){
   }
 }
 
-function pageButtonSelect(number,infoArray,count){
-  alert('page button clicked');
-  return;
-
+function pageButtonSelect(block,number,infoArray,count){
+  alert('pageButton clicked');
+  alert(localStorage.getItem(PAGETYPE));
   switch(localStorage.getItem(PAGETYPE)){
-    case 'newsItem':
-      
+    case NEWSITEM:
+      changeNewsInfoContent(block,0,infoArray,number*count,count);
       break;
-    case 'liveItem':
-
+    case LIVEITEM:
+      changeLiveInfoContent(block,0,infoArray,number*count,count);
       break;
-    case 'discoItem':
-
+    case DISCOITEM:
+      addImageDataToTable(block,infoArray,number*count);
       break;
   }
 }
@@ -304,8 +338,6 @@ function appendTableToBlock(block,table){
 }
 
 function addImageDataToTable(table,imgDataArray,start){
-
-  let maxCount = table.rows.length * table.rows[0].cells.length;
   let dIndex = start;
 
   for(let i=0;i<table.rows.length;i++){
@@ -314,8 +346,8 @@ function addImageDataToTable(table,imgDataArray,start){
        break;
       let cell = table.rows[i].cells[j];
 
-      cell.childNodes[0].setAttribute('src',imgDataArray[dIndex].getImageSrc());
-      cell.childNodes[0].setAttribute('alt','songImage');
+      cell.childNodes[0].setAttribute('src','images/'+imgDataArray[dIndex].getImageSrc());
+      cell.childNodes[0].setAttribute('alt',imgDataArray[dIndex].getContent());
 
       dIndex++;
     }
