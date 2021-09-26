@@ -303,16 +303,35 @@ table.image-table img{
 /*moviePage*/
 
 section.movie-info-content{
-    width:60%;
+    width:90%;
     background-color:rgba(255,255,255,0.5);
+}
+
+section.movie-info-content h1{
+     text-align:center;
+    font-size:32px;
+    color:#77f;
+}
+
+section.movie-info-content .movie-info-group{
     display:flex;
     flex-direction:row;
     flex-wrap:wrap;
-
+    align-content:center;
 }
 
 section.movie-info-content .movie-info-block{
-    
+     width:448px;
+    height:255px;
+    margin:10px;
+    border-color:#752;
+    border-style:ridge;
+    border-width:15px;
+}
+
+section.movie-info-content iframe{
+    width:100%;
+    height:100%;
 }
 
 /*specialize*/
