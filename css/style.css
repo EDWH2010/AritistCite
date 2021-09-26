@@ -302,11 +302,18 @@ table.image-table img{
 
 /*moviePage*/
 
-section.info-content div.movie-info-block{
-    
+section.movie-info-content{
+    width:60%;
+    background-color:rgba(255,255,255,0.5);
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
 
 }
 
+section.movie-info-content .movie-info-block{
+    
+}
 
 /*specialize*/
 
