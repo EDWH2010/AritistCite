@@ -136,6 +136,7 @@ div.info-block .images-group{
     display:flex;
     flex-direction:row;
     flex-wrap:wrap;
+    justify-content:center;
 }
 
 div.info-block .images-group .dis-image{
@@ -335,7 +336,7 @@ section.movie-info-content .movie-info-group{
     display:flex;
     flex-direction:row;
     flex-wrap:wrap;
-    align-content:center;
+    justify-content:center;
 }
 
 section.movie-info-content .movie-info-block{

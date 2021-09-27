@@ -224,6 +224,7 @@ function changeInfoContent(block,index,infoArray,start,count,className){
 
 function changeNewsInfoContent(block,index,infoArray,start,count){
  // clearChildNodesByClass(block,index,'news-info-block');
+ //alert('page button clicked');
   removeGroup(block[index],'news-info-block-group');
   newsInfoBlockAppend(block,index,infoArray,start,count);
 }
@@ -338,6 +339,7 @@ function appendTableToBlock(block,table){
 }
 
 function addImageDataToTable(table,imgDataArray,start){
+  resetImageTable(table);
   let dIndex = start;
 
   for(let i=0;i<table.rows.length;i++){
@@ -348,36 +350,20 @@ function addImageDataToTable(table,imgDataArray,start){
 
       cell.childNodes[0].setAttribute('src','images/'+imgDataArray[dIndex].getImageSrc());
       cell.childNodes[0].setAttribute('alt',imgDataArray[dIndex].getContent());
-
       dIndex++;
     }
   }
 }
 
-function removeImageToTable(table){
-   for(let i=0;i<table.rows.length;i++){
+function resetImageTable(table){
+  for(let i=0;i<table.rows.length;i++){
     for(let j=0;j<table.rows[i].cells.length;j++){
       let cell = table.rows[i].cells[j];
-      
+
       cell.removeChild(cell.childNodes[0]);
+      let img = document.createElement('img');
+      cell.appendChild(img);
     }
-  }
-}
-
-function removeImageToTable(tables,index){
-   for(let i=0;i<tables[index].rows.length;i++){
-    for(let j=0;j<tables[index].rows[i].cells.length;j++){
-      let cell = tables[index].rows[i].cells[j];
-      
-      cell.removeChild(cell.childNodes[0]);
-    }
-  }
-}
-
-
-function getOnlyListByClassName(array){
-  for(let i=0;i<array.length;i++){
-
   }
 }
 

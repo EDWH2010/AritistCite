@@ -3,11 +3,6 @@ var homeLiveIndex=0;
 var homeDiscoIndex=0;
 
 window.onload = function() {
-    /*
-    this.onclick = function(e) {
-        alert("X Position : " + e.pageX + "; Y Position : " + e.pageY);
-    }
-*/
     localStorage.clear();
     newsInfoDataLoading();
     liveInfoDataLoading();
@@ -83,18 +78,14 @@ function newsLoading(){
     localStorage.setItem(PAGETYPE,NEWSITEM);
    // alert(localStorage.getItem(PAGETYPE));
     newsInfoBlockAppend(document.querySelectorAll('div.news-info-block-group'),0,NewsInfoArray,0,10);
-    appendCircleButtonToList(document.querySelectorAll('div.news-info-block-group'),
-    getNumberList(),NewsInfoArray,10);
    // let group = createAndAppendNewsInfoBlockGroup(document.querySelector('section.info-content'));
 }
 
 function liveLoading() {
      localStorage.setItem(PAGETYPE,LIVEITEM);
   // alert(localStorage.getItem(PAGETYPE));
-
    // liveInfoDataLoading();
     liveInfoBlockAppend(document.querySelectorAll('div.live-info-block-group'),0,LiveInfoArray,0,10);
-    appendCircleButtonToList(document.querySelectorAll('div.live-info-block-group'),getNumberList(),LiveInfoArray,10);
 }
 
 function getInfoIndex(){
@@ -104,8 +95,8 @@ function getInfoIndex(){
 function discoLoading(){
     localStorage.setItem(PAGETYPE,DISCOITEM);
   // alert(localStorage.getItem(PAGETYPE));
+    
     addImageDataToTable(document.querySelector('table.image-table'),DiscoInfoArray,0);
-    appendCircleButtonToList(document.querySelector('table.image-table'),getNumberList(),DiscoInfoArray,12);
 }
 
 function movieLoading(){
@@ -191,7 +182,7 @@ function homeLiveUpdate(){
     if(homeLiveIndex > LiveInfoArray.length-1)
         homeLiveIndex=0;
     
-    changeInfoContent(getInfoContentAll('info-content'),1,NewsInfoArray,homeNewsIndex,2,'info-block');
+    changeInfoContent(getInfoContentAll('info-content'),1,LiveInfoArray,homeLiveIndex,2,'info-block');
 }
 
 function homeDiscoUpdate(){
