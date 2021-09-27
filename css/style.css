@@ -187,7 +187,6 @@ footer div#footer-logo{
 
 footer div#footer-main{
     width:75%;
-    height:100%;
     margin:0;
     display:flex;
     flex-direction:column;

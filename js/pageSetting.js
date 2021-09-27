@@ -104,7 +104,7 @@ function newsInfoDataLoading(){
       NewsInfoArray.push(new NewsInfoData(`Liaオーケストラ振替日程のお知らせ`,'2020.08.14'));
 
 
-    alert(JSON.stringify(NewsInfoArray));
+    //alert(JSON.stringify(NewsInfoArray));
 }
 
 function createHomeInfoBlock(){
