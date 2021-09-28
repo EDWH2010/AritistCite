@@ -79,6 +79,18 @@ class DiscoInfoData extends InfoData{
     }
 }
 
+
+class formData{
+    
+    constructor(name,email,catogory,content){
+        this.name=name;
+        this.email=email;
+        this.catogory = catogory;
+        this.content=content;
+    }
+}
+
+
 const PAGETYPE = 'pageType';
 const PAGECOUNT = 'pageCount';
 

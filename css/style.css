@@ -366,7 +366,10 @@ section.movie-info-content iframe{
 }
 
 /*specialize*/
-
+div.specialize-info-block img{
+    margin-top:20px;
+    margin-bottom:20px;
+}
 
 
 /*profile*/

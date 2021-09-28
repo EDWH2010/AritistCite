@@ -120,6 +120,22 @@ function profileLoading(){
 }
 
 function contactLoading(){
+   // alert('contactPage Loaded');
+
+    $('#contact-form').submit(function(){
+        
+        let name = $(":text[name='name']").val();
+        
+        let email = $(":text[name='email']:first").val();
+        
+        let catogory = $("select:selected[name='catogory']").val();
+        
+        let area = $("textarea[name='input-content']").val();
+        
+        const sendData = new formData(name,email,catogory,area);
+
+        alert("送信成功しました\n" + JSON.stringify(sendData));
+    });
 
 }
 

@@ -12,13 +12,16 @@ function discoInfoDataLoading(){
   DiscoInfoArray.push(new DiscoInfoData('ksLiveWorld','KSLLiveWorld_Lia.jpg'));
   DiscoInfoArray.push(new DiscoInfoData('prismatic_Lia','prismatic_Lia.jpg'));
   DiscoInfoArray.push(new DiscoInfoData('spectrum','spectrumRays_Lia.jpg'));
-  DiscoInfoArray.push(new DiscoInfoData('Revive','REVIVES_Lia.jpg'));
+  DiscoInfoArray.push(new DiscoInfoData('most treasure','mostTreasure_Lia.jpg'));
   DiscoInfoArray.push(new DiscoInfoData('enigmatic','enigmatic_Lia.JPG'));
   DiscoInfoArray.push(new DiscoInfoData('clannad_originalSoundTrack','clannad_originalSoundTrack.png'));
   DiscoInfoArray.push(new DiscoInfoData('kizunairo','kizunairo_Lia.jpg'));
   DiscoInfoArray.push(new DiscoInfoData('My soul your beats','MySoulYourBeats.png'));
   DiscoInfoArray.push(new DiscoInfoData('Key lia best 2021','Key_LiasBest-2002-2010.png'));
-  DiscoInfoArray.push(new DiscoInfoData('Revive','REVIVES_Lia.jpg'));
+  DiscoInfoArray.push(new DiscoInfoData('AirSong','AirSong_Lia.jpg'));
+  DiscoInfoArray.push(new DiscoInfoData('planetarian','planetarian_GentleJena_Lia.jpg'));
+  DiscoInfoArray.push(new DiscoInfoData('tomoyoAfter','tomoyoAfter_Lia.jpg'));
+  DiscoInfoArray.push(new DiscoInfoData('modification','Modification_Lia.jpg'));
 }
 
 
