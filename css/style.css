@@ -10,16 +10,15 @@ body{
 #wrapper{
     min-width:100%;
     min-height:100%;
-
     padding:0;
     margin:0 auto;
-
 }
 
 header{
     display:flex;
     flex-direction:column;
     background-color: #afafff;
+    padding:0;
      z-index:2;
 }
 
@@ -43,10 +42,22 @@ header .selection-list ul{
 }
 
 header .selection-list ul li{
+    background-color:#afafff;
     display:block;
     align-self:center;
     text-align:center;
     height:100%;  
+    width:12.5%;
+    transition:1s;
+}
+
+header .selection-list ul li:hover{
+    background-color:#fff;
+    color:#00f;
+}
+
+header .selection-list ul li a{
+    text-decoration:none;
 }
 
 header .selection-list ul li.current-page{
@@ -55,14 +66,6 @@ header .selection-list ul li.current-page{
     text-shadow:#fff 1px 1px 1px;
 }
 
-header .selection-list ul li:hover{
-    color:#fff;
-    background-color:#d2d2fa;
-}
-
-header .selection-list ul li a{
-    text-decoration:none;
-}
 
 main{
     min-height:1000px;
