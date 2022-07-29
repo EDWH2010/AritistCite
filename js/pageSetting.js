@@ -105,8 +105,6 @@ function newsInfoDataLoading(){
       NewsInfoArray.push(new NewsInfoData(`デビュー20周年を迎えたLiaのベスト盤「Lia 20th BEST」発売を記念し、Zepp DiverCityでのワンマンライブ2daysが開催決定！`,'2020.09.09'));
       NewsInfoArray.push(new NewsInfoData(`Lia オフィシャルサイト公開のお知らせ`,'2020.09.09'));
       NewsInfoArray.push(new NewsInfoData(`Liaオーケストラ振替日程のお知らせ`,'2020.08.14'));
-
-
     //alert(JSON.stringify(NewsInfoArray));
 }
 
@@ -143,7 +141,7 @@ function createNewsInfoBlock(){
     let p = document.createElement('p');
     div.appendChild(p);
   }
-
+  
   return div;
 }
 
@@ -333,7 +331,6 @@ function createTable(tClassName,rows,cols){
       cell.appendChild(img);
     }
   }
-
     return table;
 }
 
@@ -385,7 +382,6 @@ function clearChildNodesByClass(block,index,className){
           block[index].removeChild(c);
     }
 }
-
 
 
 //Slide-FadeEffectImages

@@ -75,7 +75,6 @@ function indexLoading() {
     setInterval(function(){
         imageUpdate($('div.slide-imagesShow'),1500);
     },5000);
-    
     showCurrentOption(getOptionsList());
     homeInfoUpdate();
 }
@@ -187,7 +186,7 @@ function getFileName(isEx=false){
 
 function homeInfoUpdate(){
     setInterval(()=>{
-       homeNewsInfoUpdate();
+        homeNewsInfoUpdate();
         homeLiveUpdate();
 
     },5000);
